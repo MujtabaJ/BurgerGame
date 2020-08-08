@@ -3,24 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GamesFragment">
+    tools:context=".Games1D.burger.LevelsFragment">
+
+    <!-- TODO: Update blank fragment layout -->
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
-
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Switch" />
+        android:text="@string/hello_blank_fragment" />
 
     <Button
-        android:id="@+id/burgerGameBtn"
+        android:id="@+id/level1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="164dp"
-        android:text="@string/burger_game" />
+        android:text="@string/level_1" />
 
 </FrameLayout>

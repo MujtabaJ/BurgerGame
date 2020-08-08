@@ -9,5 +9,23 @@
         android:id="@+id/gamesFragment"
         android:name="com.example.codeplay.GamesFragment"
         android:label="games_fragment"
-        tools:layout="@layout/games_fragment" />
+        tools:layout="@layout/games_fragment" >
+        <action
+            android:id="@+id/action_gamesFragment_to_levelsFragment"
+            app:destination="@id/levelsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/burgerFragment"
+        android:name="com.example.codeplay.Games1D.burger.BurgerFragment"
+        android:label="burger_fragment"
+        tools:layout="@layout/burger_fragment" />
+    <fragment
+        android:id="@+id/levelsFragment"
+        android:name="com.example.codeplay.Games1D.burger.LevelsFragment"
+        android:label="fragment_levels"
+        tools:layout="@layout/fragment_levels" >
+        <action
+            android:id="@+id/action_levelsFragment_to_burgerFragment"
+            app:destination="@id/burgerFragment" />
+    </fragment>
 </navigation>

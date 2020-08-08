@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Code Play</string>
+    <string name="burger_game">Burger Game</string>
+    <string name="level_1">Level 1</string>
 </resources>

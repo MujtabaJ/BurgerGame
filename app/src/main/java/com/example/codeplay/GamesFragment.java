@@ -9,6 +9,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -37,7 +38,11 @@ public class GamesFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(GamesViewModel.class);
         burgerGameButton = this.getView().findViewById(R.id.burgerGameBtn);
-        burgerGameButton.setOnClickListener(view -> Log.d("ds", "onClick: "));
+        burgerGameButton.setOnClickListener(view ->
+                Navigation.findNavController(
+                        this.getActivity(),
+                        R.id.nav_host_fragment)
+                        .navigate(R.id.action_gamesFragment_to_levelsFragment));
         ((SwitchCompat) this.getView().findViewById(R.id.switch1)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
