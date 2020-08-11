@@ -21,7 +21,8 @@ import android.widget.CompoundButton;
 public class GamesFragment extends Fragment {
 
     private GamesViewModel mViewModel;
-    Button burgerGameButton;
+    Button burgerMakerPlay;
+    Button buildingMakerPlay;
 
     public static GamesFragment newInstance() {
         return new GamesFragment();
@@ -34,15 +35,24 @@ public class GamesFragment extends Fragment {
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        this.init(view);
+    }
+
+    public void init(View view){
+        burgerMakerPlay = view.findViewById(R.id.playburgermaker);
+        buildingMakerPlay = view.findViewById(R.id.playbuildingmaker);
+        burgerMakerPlay.setOnClickListener(v ->
+                Navigation.findNavController(
+                        view)
+                        .navigate(R.id.action_gamesFragment_to_levelsFragment));
+    }
+
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(GamesViewModel.class);
-        burgerGameButton = this.getView().findViewById(R.id.burgerGameBtn);
-        burgerGameButton.setOnClickListener(view ->
-                Navigation.findNavController(
-                        this.getActivity(),
-                        R.id.nav_host_fragment)
-                        .navigate(R.id.action_gamesFragment_to_levelsFragment));
         ((SwitchCompat) this.getView().findViewById(R.id.switch1)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
