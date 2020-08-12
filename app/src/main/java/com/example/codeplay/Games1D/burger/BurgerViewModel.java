@@ -48,9 +48,9 @@ public class BurgerViewModel extends ViewModel {
 
     public List<Integer> createLevel1Problem() {
         List<Integer> list = new ArrayList<>();
-        list.add(1);
-        list.add(new Random().nextInt(3) + 3);
         list.add(2);
+        list.add(new Random().nextInt(3) + 3);
+        list.add(1);
         return list;
     }
 
@@ -60,13 +60,13 @@ public class BurgerViewModel extends ViewModel {
         mct.add(3);
         mct.add(4);
         mct.add(5);
+        list.add(2);
+        Collections.shuffle(mct);
+        list.addAll(mct);
+        list.add(2);
+        Collections.shuffle(mct);
+        list.addAll(mct);
         list.add(1);
-        Collections.shuffle(mct);
-        list.addAll(mct);
-        list.add(2);
-        Collections.shuffle(mct);
-        list.addAll(mct);
-        list.add(2);
         return list;
     }
 

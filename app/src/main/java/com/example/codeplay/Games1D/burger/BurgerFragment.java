@@ -55,10 +55,10 @@ public class BurgerFragment extends Fragment {
     private void onProblemUpdated(List<Integer> list) {
         int top_margin = 0;
         for (int i = 0; i < list.size(); i++) {
-            if (i > 0 && list.get(i - 1) == 4) {
+            if (i < list.size() - 1  && list.get(i + 1) == 4) {
                 top_margin = -14;
             }
-            problemLayout.addView(getComponent(list.get(i), top_margin));
+            problemLayout.addView(getComponent(list.get(i), top_margin), 0);
             top_margin = 0;
         }
     }
