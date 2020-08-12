@@ -5,22 +5,95 @@
     android:layout_height="match_parent"
     tools:context=".GamesFragment">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        android:background="#a5cfc5">
+
+        <LinearLayout
+            android:id="@+id/layout_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/bun_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_top_bun" />
+
+            <TextView
+                android:id="@+id/app_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bun_image"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:text="BURGER MAKER"
+                android:textColor="#FFF"
+                android:textSize="4mm"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/app_title_and"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/app_title"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="AND"
+                android:textColor="#FFF"
+                android:textSize="3mm" />
+
+            <TextView
+                android:id="@+id/app_title_building"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/app_title_and"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:text="BUILDING MAKER"
+                android:textColor="#FFF"
+                android:textSize="4mm"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/playburgermaker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="clickListner"
+                android:text="BURGER MAKER"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/playbuildingmaker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="clickListner"
+                android:text="BURGER MAKER"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </RelativeLayout>
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Switch" />
-
-    <Button
-        android:id="@+id/burgerGameBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="164dp"
-        android:text="@string/burger_game" />
 
 </FrameLayout>
