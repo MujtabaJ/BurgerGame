@@ -116,13 +116,18 @@
                     android:background="@drawable/ic_playbutton" />
 
                 <LinearLayout
+                    android:id="@+id/play_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="2dp"
                     android:layout_marginTop="2dp"
                     android:layout_marginStart="2dp"
                     android:background="@drawable/play_layout_bg"
-                    android:layout_marginEnd="54dp">
+                    android:layout_marginEnd="54dp"
+                    android:paddingEnd="8dp"
+                    android:paddingStart="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                 </LinearLayout>
 
@@ -183,13 +188,14 @@
                             android:layout_width="54dp"
                             android:layout_height="54dp"
                             android:layout_margin="4dp"
-                            android:background="@drawable/ic_repeat_button"
                             app:cardCornerRadius="4dp">
 
                             <ImageButton
+                                android:id="@+id/bottombun_btn"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:src="@drawable/ic_bottom_bun_button" />
+                                android:src="@drawable/ic_bottom_bun_button"
+                                android:tag="BOTTOM_BUN"/>
 
                         </androidx.cardview.widget.CardView>
 
@@ -201,9 +207,11 @@
                             app:cardCornerRadius="4dp">
 
                             <ImageButton
+                                android:id="@+id/meat_btn"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:src="@drawable/ic_meat_button" />
+                                android:src="@drawable/ic_meat_button"
+                                android:tag="MEAT"/>
 
                         </androidx.cardview.widget.CardView>
 
@@ -215,9 +223,11 @@
                             app:cardCornerRadius="4dp">
 
                             <ImageButton
+                                android:id="@+id/cheese_btn"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:src="@drawable/ic_cheese_button" />
+                                android:src="@drawable/ic_cheese_button"
+                                android:tag="CHEESE"/>
 
                         </androidx.cardview.widget.CardView>
 
@@ -229,9 +239,11 @@
                             app:cardCornerRadius="4dp">
 
                             <ImageButton
+                                android:id="@+id/repeat_btn"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:src="@drawable/ic_repeat_button" />
+                                android:src="@drawable/ic_repeat_button"
+                                android:tag="REPEAT"/>
 
                         </androidx.cardview.widget.CardView>
 
@@ -254,9 +266,11 @@
                             app:cardCornerRadius="4dp">
 
                             <ImageButton
+                                android:id="@+id/tomato_btn"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:src="@drawable/ic_tomato_button" />
+                                android:src="@drawable/ic_tomato_button"
+                                android:tag="TOMATO"/>
 
                         </androidx.cardview.widget.CardView>
 
@@ -268,9 +282,11 @@
                             app:cardCornerRadius="4dp">
 
                             <ImageButton
+                                android:id="@+id/lettuce_btn"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:src="@drawable/ic_lettuce_button" />
+                                android:src="@drawable/ic_lettuce_button"
+                                android:tag="LETTUCE"/>
 
                         </androidx.cardview.widget.CardView>
 
@@ -282,9 +298,11 @@
                             app:cardCornerRadius="4dp">
 
                             <ImageButton
+                                android:id="@+id/topbun_btn"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/ic_top_bun_button" />
+                                android:src="@drawable/ic_top_bun_button"
+                                android:tag="TOP_BUN"/>
 
                         </androidx.cardview.widget.CardView>
 
@@ -296,9 +314,11 @@
                             app:cardCornerRadius="4dp">
 
                             <ImageButton
+                                android:id="@+id/mirror_btn"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:src="@drawable/ic_mirror_button" />
+                                android:src="@drawable/ic_mirror_button"
+                                android:tag="MIRROR"/>
 
                         </androidx.cardview.widget.CardView>
 
