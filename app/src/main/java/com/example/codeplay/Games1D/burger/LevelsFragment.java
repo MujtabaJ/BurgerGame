@@ -18,7 +18,7 @@ import com.example.codeplay.R;
 
 public class LevelsFragment extends Fragment {
 
-    private BurgerViewModel mViewModel;
+    private BurgerViewModel viewModel;
     Button level1Button;
 
     public static LevelsFragment newInstance() {
@@ -36,6 +36,7 @@ public class LevelsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         level1Button = view.findViewById(R.id.level1);
         level1Button.setOnClickListener(v -> {
+            viewModel.setLevel(BurgerViewModel.LevelState.ONE);
             Navigation.findNavController(
                     v).navigate(R.id.action_levelsFragment_to_burgerFragment);
         });
@@ -44,7 +45,7 @@ public class LevelsFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(BurgerViewModel.class);
+        viewModel = ViewModelProviders.of(this.getParentFragment()).get(BurgerViewModel.class);
         // TODO: Use the ViewModel
     }
 
