@@ -1,5 +1,6 @@
 package com.example.codeplay.Games1D.burger;
 
+import android.util.Log;
 import android.widget.ArrayAdapter;
 
 import androidx.lifecycle.LiveData;
@@ -34,6 +35,9 @@ public class BurgerViewModel extends ViewModel {
             case TWO:
                 problemList.setValue(createLevel2Problem());
                 break;
+            case THREE:
+                problemList.setValue(createLevel3Problem());
+                break;
         }
         this.level.setValue(level);
     }
@@ -66,6 +70,22 @@ public class BurgerViewModel extends ViewModel {
         list.add(2);
         Collections.shuffle(mct);
         list.addAll(mct);
+        list.add(1);
+        return list;
+    }
+
+    public List<Integer> createLevel3Problem() {
+        int numberOfStacks = new Random().nextInt(2) + 2;
+        List<Integer> list = new ArrayList<>();
+        List<Integer> mct = new ArrayList<>();
+        mct.add(3);
+        mct.add(4);
+        mct.add(5);
+        for (int i = 0; i < numberOfStacks; i++) {
+            list.add(2);
+            Collections.shuffle(mct);
+            list.addAll(mct);
+        }
         list.add(1);
         return list;
     }

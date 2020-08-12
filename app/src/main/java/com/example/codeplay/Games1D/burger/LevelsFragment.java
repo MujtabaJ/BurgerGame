@@ -33,6 +33,7 @@ public class LevelsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         view.findViewById(R.id.level1).setOnClickListener(this::levelButtonClickListener);
         view.findViewById(R.id.level2).setOnClickListener(this::levelButtonClickListener);
+        view.findViewById(R.id.level3).setOnClickListener(this::levelButtonClickListener);
     }
 
     @Override
@@ -49,6 +50,9 @@ public class LevelsFragment extends Fragment {
                 break;
             case R.id.level2:
                 viewModel.setLevel(BurgerViewModel.LevelState.TWO);
+                break;
+            case R.id.level3:
+                viewModel.setLevel(BurgerViewModel.LevelState.THREE);
                 break;
         }
         Navigation.findNavController(
