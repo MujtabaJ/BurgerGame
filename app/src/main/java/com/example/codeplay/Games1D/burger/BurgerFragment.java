@@ -1,16 +1,6 @@
 package com.example.codeplay.Games1D.burger;
 
-import androidx.lifecycle.ViewModelProviders;
-
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,12 +8,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
+
 import com.example.codeplay.R;
 import com.example.codeplay.utils.Utils;
 
 import java.util.List;
-
-import static android.content.ContentValues.TAG;
 
 public class BurgerFragment extends Fragment {
 
@@ -66,6 +59,7 @@ public class BurgerFragment extends Fragment {
                 top_margin = -14;
             }
             problemLayout.addView(getComponent(list.get(i), top_margin));
+            top_margin = 0;
         }
     }
 
@@ -103,14 +97,12 @@ public class BurgerFragment extends Fragment {
                 imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_top_bun));
                 break;
         }
-        if (margin_top != 0) {
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT);
             lp.setMargins(lp.leftMargin, Utils.dpToPx(margin_top, this.getContext()), lp.rightMargin, lp.bottomMargin);
             imageView.setLayoutParams(lp);
-        }
-        return imageView;
+            return imageView;
     }
 
 }
