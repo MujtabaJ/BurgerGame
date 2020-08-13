@@ -8,5 +8,6 @@
     <color name="colorToolsBackground">#B8B8B8</color>
     <color name="colorPlayBar">#23AE1A</color>
     <color name="colorFunctionBar">#7E00B4</color>7A7A7A
-    <color name="colorToolsCard">#7A7A7A</color>
+    <color name="colorToolsCard">#7A7A7A</color>00FF22
+    <color name="colorPlaySelected">#00FF22</color>
 </resources>

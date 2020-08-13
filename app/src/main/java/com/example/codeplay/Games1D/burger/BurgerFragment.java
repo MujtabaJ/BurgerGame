@@ -10,9 +10,11 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,13 +25,18 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.codeplay.R;
 import com.example.codeplay.utils.Utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BurgerFragment extends Fragment implements View.OnTouchListener, View.OnDragListener {
 
     private BurgerViewModel viewModel;
-    private LinearLayout problemLayout, playLayout;
+    private LinearLayout problemLayout, playLayout, solutionLayout, playArea;
+    private HorizontalScrollView playScrollView;
     ImageButton bottomBunButton, topBunButton, meatButton, cheeseButton, lettuceButton, tomatoButton;
+    ImageButton playButton;
+    List<Integer> solution;
+    String clipData;
 
     public static BurgerFragment newInstance() {
         return new BurgerFragment();
@@ -45,7 +52,10 @@ public class BurgerFragment extends Fragment implements View.OnTouchListener, Vi
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        solution = new ArrayList<>();
+
         problemLayout = view.findViewById(R.id.exercise);
+        solutionLayout = view.findViewById(R.id.solution);
         bottomBunButton = view.findViewById(R.id.bottombun_btn);
         meatButton = view.findViewById(R.id.meat_btn);
         cheeseButton = view.findViewById(R.id.cheese_btn);
@@ -53,6 +63,9 @@ public class BurgerFragment extends Fragment implements View.OnTouchListener, Vi
         tomatoButton = view.findViewById(R.id.tomato_btn);
         lettuceButton = view.findViewById(R.id.lettuce_btn);
         playLayout = view.findViewById(R.id.play_layout);
+        playArea = view.findViewById(R.id.play_area);
+        playButton = view.findViewById(R.id.play_button);
+        playScrollView = view.findViewById(R.id.play_scroll_view);
 
         bottomBunButton.setOnTouchListener(this);
         meatButton.setOnTouchListener(this);
@@ -60,7 +73,9 @@ public class BurgerFragment extends Fragment implements View.OnTouchListener, Vi
         topBunButton.setOnTouchListener(this);
         lettuceButton.setOnTouchListener(this);
         tomatoButton.setOnTouchListener(this);
-        playLayout.setOnDragListener(this);
+//        playLayout.setOnDragListener(this);
+        playScrollView.setOnDragListener(this);
+        playButton.setOnClickListener(view1 -> viewModel.setSolutionList(solution));
     }
 
     @Override
@@ -74,6 +89,19 @@ public class BurgerFragment extends Fragment implements View.OnTouchListener, Vi
     public void subscribeViewModel() {
 //        viewModel.getLevel().observe(this, this::onLevelSelected);
         viewModel.getProblemList().observe(this, this::onProblemUpdated);
+        viewModel.getSolutionList().observe(this,this::onSolutionUpdated);
+    }
+
+    private void onSolutionUpdated(List<Integer> list) {
+        solutionLayout.removeAllViews();
+        int top_margin = 0;
+        for (int i = 0; i < list.size(); i++) {
+            if (i < list.size() - 1 && list.get(i + 1) == 4) {
+                top_margin = -14;
+            }
+            solutionLayout.addView(getComponent(list.get(i), top_margin), 0);
+            top_margin = 0;
+        }
     }
 
     private void onProblemUpdated(List<Integer> list) {
@@ -116,6 +144,9 @@ public class BurgerFragment extends Fragment implements View.OnTouchListener, Vi
                 break;
             case 5:
                 imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_tomato));
+                break;
+            case 6:
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_lettuce));
                 break;
             default:
                 imageView.setImageDrawable(getResources().getDrawable(R.drawable.ic_top_bun));
@@ -165,6 +196,26 @@ public class BurgerFragment extends Fragment implements View.OnTouchListener, Vi
         return imageView;
     }
 
+    public int getComponentId(String tag) {
+        ImageView imageView = new ImageView(this.getContext());
+        switch (tag) {
+            case "BOTTOM_BUN":
+                return 2;
+            case "TOP_BUN":
+                return 1;
+            case "MEAT":
+                return 3;
+            case "CHEESE":
+                return 4;
+            case "TOMATO":
+                return 5;
+            case "LETTUCE":
+                return 6;
+            default:
+                return 1;
+        }
+    }
+
     @Override
     public boolean onDrag(View v, DragEvent event) {
         switch (event.getAction()) {
@@ -172,26 +223,29 @@ public class BurgerFragment extends Fragment implements View.OnTouchListener, Vi
                 v.invalidate();
                 return true;
             case DragEvent.ACTION_DRAG_ENTERED:
-                String clipData = event.getClipDescription().getLabel().toString();
-                ((LinearLayout) v).setBackground(getResources().getDrawable(R.drawable.play_layout_bg_selected));
+                 clipData = event.getClipDescription().getLabel().toString();
+                playArea.setBackground(getResources().getDrawable(R.drawable.play_layout_bg_selected));
                 v.invalidate();
                 return true;
             case DragEvent.ACTION_DRAG_LOCATION:
                 return true;
             case DragEvent.ACTION_DRAG_EXITED:
-                ((LinearLayout) v).setBackground(getResources().getDrawable(R.drawable.play_layout_bg));
+                playArea.setBackground(getResources().getDrawable(R.drawable.play_layout_bg));
                 v.invalidate();
                 return true;
             case DragEvent.ACTION_DROP:
                 clipData = event.getClipDescription().getLabel().toString();
-                ((LinearLayout) v).addView(getButton(clipData));
+                playLayout.addView(getButton(clipData));
                 v.invalidate();
                 return true;
 
             case DragEvent.ACTION_DRAG_ENDED:
-                ((LinearLayout) v).setBackground(getResources().getDrawable(R.drawable.play_layout_bg));
-//                if (event.getResult()) {
-//                } else {
+                playArea.setBackground(getResources().getDrawable(R.drawable.play_layout_bg));
+                if (event.getResult()) {
+                    solution.add(getComponentId(clipData));
+                    clipData = null;
+                }
+//                else {
 //                }
                 return true;
             default:
@@ -229,5 +283,12 @@ public class BurgerFragment extends Fragment implements View.OnTouchListener, Vi
                 break;
         }
         return false;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        solution.clear();
+        viewModel.setSolutionList(solution);
     }
 }

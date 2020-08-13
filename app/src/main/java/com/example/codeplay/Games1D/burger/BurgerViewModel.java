@@ -17,10 +17,12 @@ public class BurgerViewModel extends ViewModel {
 
     private MutableLiveData<LevelState> level;
     private MutableLiveData<List<Integer>> problemList;
+    private MutableLiveData<List<Integer>> solutionList;
 
     public BurgerViewModel() {
         this.level = new MutableLiveData<>();
         this.problemList = new MutableLiveData<>();
+        this.solutionList = new MutableLiveData<>();
     }
 
     public LiveData<LevelState> getLevel() {
@@ -48,6 +50,14 @@ public class BurgerViewModel extends ViewModel {
 
     public void setProblemList(List<Integer> problemList) {
         this.problemList.setValue(problemList);
+    }
+
+    public MutableLiveData<List<Integer>> getSolutionList() {
+        return solutionList;
+    }
+
+    public void setSolutionList(List<Integer> solutionList) {
+        this.solutionList.setValue(solutionList);
     }
 
     public List<Integer> createLevel1Problem() {
