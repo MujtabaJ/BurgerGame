@@ -57,7 +57,7 @@ dependencies {
     implementation "androidx.navigation:navigation-ui:$nav_version"
     // Feature module Support
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
-
+    implementation "androidx.cardview:cardview:1.0.0"
     // Testing Navigation
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
 

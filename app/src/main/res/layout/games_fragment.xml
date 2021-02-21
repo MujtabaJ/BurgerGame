@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#a5cfc5">
+        android:background="#000">
 
         <LinearLayout
             android:id="@+id/layout_logo"
@@ -65,28 +65,97 @@
 
         <LinearLayout
             android:id="@+id/layout_buttons"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/layout_logo"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="100dp"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/playburgermaker"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/layout_buttons1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="clickListner"
-                android:text="BURGER MAKER"
-                android:textStyle="bold" />
+                android:layout_below="@+id/layout_logo"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/playbuildingmaker"
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/burger2" />
+
+                <Button
+                    android:id="@+id/playburgermaker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="clickListner"
+                    android:text="BURGER MAKER"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_buttons2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="clickListner"
-                android:text="BURGER MAKER"
-                android:textStyle="bold" />
+                android:layout_below="@+id/layout_logo"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/building" />
+
+                <Button
+                    android:id="@+id/playbuildingmaker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="BUILDING MAKER"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_buttons3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_logo"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/carw" />
+
+                <Button
+                    android:id="@+id/playcarmaker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CAR MAKER"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/layout_buttons4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_logo"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/carw" />
+
+                <Button
+                    android:id="@+id/playbikemaker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="BIKE MAKER"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
         </LinearLayout>
     </RelativeLayout>
 
@@ -94,6 +163,7 @@
         android:id="@+id/switch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Switch" />
+        android:text="Switch"
+        android:textColor="#fff" />
 
 </FrameLayout>

@@ -18,6 +18,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 
+import com.example.codeplay.utils.ViewDialog;
+
 public class GamesFragment extends Fragment {
 
     private GamesViewModel mViewModel;
@@ -47,6 +49,8 @@ public class GamesFragment extends Fragment {
                 Navigation.findNavController(
                         view)
                         .navigate(R.id.action_gamesFragment_to_levelsFragment));
+
+
     }
 
     @Override
